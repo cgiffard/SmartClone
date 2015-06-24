@@ -37,6 +37,7 @@ const myImmutableObject = {
 	"bar": "Some other really valuable customer records"
 };
 Object.freeze(myImmutableObject);
+Object.seal(myImmutableObject);
 
 function someMiddleware(req, res, next) {
 	// Don't want to touch my immutable object!
