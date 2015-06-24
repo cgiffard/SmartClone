@@ -1,5 +1,7 @@
 # SmartClone
 
+[![Build Status](https://travis-ci.org/cgiffard/SmartClone.png?branch=master)](https://travis-ci.org/cgiffard/SmartClone)
+
 Deep clone JavaScript objects, including their immediate prototypes, without
 inadvertently copying methods and values from global prototypes. Also replicates
 circular relationships in newly created objects.
