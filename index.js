@@ -37,7 +37,7 @@ var protos = [
         return obj.prototype;
     });
 
-function smartClone(input) {
+function smartClone(input, stack) {
 
     // If we're not dealing with an object, don't clone.
     if (typeof input !== "object" || !input) {
@@ -53,6 +53,27 @@ function smartClone(input) {
 
         // Create our clone destination, ensuring it is an array if required
         fresh       = input instanceof Array ? [] : {};
+
+    // If the stack is blank, create it, and populate the first item
+    stack = stack || [];
+
+    // Check to see whether the object we're dealing with now isn't
+    // a circular reference
+    var stackIndex = stack.length,
+        circular = false;
+
+    while (--stackIndex >= 0) {
+        if (input === stack[stackIndex].original) {
+            // Bail out if we found circular reference
+            return stack[stackIndex].new;
+        }
+    }
+
+    // If we didn't find a circular reference, push to the stack
+    stack = stack.concat({
+        "original": input,
+        "new": fresh
+    });
 
     // To cultists, this is the 'naughty' method of iteration.
     // Too bad, suckas. We *want* to iterate over the prototype here.
@@ -70,9 +91,15 @@ function smartClone(input) {
             continue;
         }
 
+        // Quickly handle one-level circular references
+        if (input[key] === input) {
+            fresh[key] = fresh;
+            continue;
+        }
+
         // If the property we're handling right now is an object, recurse.
         if (input[key] instanceof Object && typeof(input[key]) === "object") {
-            fresh[key] = smartClone(input[key]);
+            fresh[key] = smartClone(input[key], stack);
             continue;
         }
 

@@ -1,7 +1,8 @@
 # SmartClone
 
 Deep clone JavaScript objects, including their immediate prototypes, without
-inadvertently copying methods and values from global prototypes.
+inadvertently copying methods and values from global prototypes. Also replicates
+circular relationships in newly created objects.
 
 ## Installation
 
@@ -77,8 +78,8 @@ prototype-based copy-on-write ephemeral objects.
 
 #### Notes:
 
-* Currently, this module *will* blow the stack when confronted with big objects.
-* It also doesn't currently test for circular references. Be warned. (Fixing ASAP.)
+* †Currently, this module *will* blow the stack if you're a nutcase and have
+  objects nested (without relying on circularity) tens of thousands deep.
 
 ## Testing
 

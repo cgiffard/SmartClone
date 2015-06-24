@@ -68,6 +68,48 @@ describe("SmartClone", function() {
                 assert(smartClone(myObject).myArray instanceof Array,
                     "The nested array was coerced to a non-array type!");
             });
+
+        it("correctly maintains circular links in objects",
+            function() {
+                var myObject = { };
+                myObject.circular = myObject;
+
+                var clonedObject = smartClone(myObject);
+                assert.equal(clonedObject, clonedObject.circular,
+                    "The circular relationship was not maintained!");
+                assert.notEqual(clonedObject.circular, myObject.circular,
+                    "The identity of the new object is not pure!");
+            });
+
+        it("correctly maintains deep circular links in objects",
+            function() {
+                var myObject = { "deep": {} };
+                myObject.deep.circular = myObject;
+
+                var clonedObject = smartClone(myObject);
+                assert.equal(clonedObject, clonedObject.deep.circular,
+                    "The circular relationship was not maintained!");
+                assert.notEqual(clonedObject.deep, clonedObject.deep.circular,
+                    "The circular relationship was not correct!");
+                assert.notEqual(clonedObject.deep.circular, myObject.deep.circular,
+                    "The identity of the new object is not pure!");
+            });
+
+        it("correctly maintains deep sibling circularity in objects",
+            function() {
+                var family = { "grandma": {}, "grandpa": {} };
+                // Accident with a time machine!
+                family.grandma.son = family.grandpa;
+                family.grandpa.daughter = family.grandma;
+
+                // And now we're cloning them? Oh, the humanity!
+                var horrendouslyClonedFamily = smartClone(family);
+
+                // I haven't yet thought of a way to get single-level sibling
+                // circularity working cleanly, so for now I'm more concerned
+                // that it hasn't crashed, and I'm making no assertions other
+                // than the implicit expectation that it hasn't thrown.
+            });
     });
 
     describe("Prototypal cloning", function() {
