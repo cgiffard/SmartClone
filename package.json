@@ -1,0 +1,32 @@
+{
+  "name": "smartclone",
+  "version": "0.0.1",
+  "description": "Cleverly clone objects including their immediate prototypes, without fear!",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgiffard/SmartClone.git"
+  },
+  "keywords": [
+    "clone",
+    "object",
+    "prototype",
+    "chain",
+    "inheritance",
+    "recursive",
+    "deep",
+    "deepclone"
+  ],
+  "author": "Christopher Giffard <christopher.giffard@cgiffard.com>",
+  "license": "BSD-2 Clause",
+  "bugs": {
+    "url": "https://github.com/cgiffard/SmartClone/issues"
+  },
+  "homepage": "https://github.com/cgiffard/SmartClone#readme",
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  }
+}

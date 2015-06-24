@@ -1,0 +1,54 @@
+{
+	"excludeFiles": ["node_modules/**"],
+	"requireCurlyBraces": [
+	    "else",
+	    "do",
+	    "try",
+	    "catch"
+	],
+	"requireSpaceAfterKeywords": [
+	    "if",
+	    "else",
+	    "for",
+	    "while",
+	    "do",
+	    "switch",
+	    "return",
+	    "try",
+	    "catch"
+	],
+	"requireSpaceBeforeBlockStatements": true,
+	"requireSpacesInConditionalExpression": {
+	    "afterTest": true,
+	    "beforeConsequent": true,
+	    "afterConsequent": true,
+	    "beforeAlternate": true
+	},
+	"requireSpacesInFunction": {
+	    "beforeOpeningCurlyBrace": true
+	},
+	"disallowSpacesInFunction": {
+	    "beforeOpeningRoundBrace": true
+	},
+	"disallowEmptyBlocks": true,
+	"requireSpacesInsideObjectBrackets": "allButNested",
+	"requireCommaBeforeLineBreak": true,
+	"requireOperatorBeforeLineBreak": true,
+	"disallowSpaceAfterPrefixUnaryOperators": true,
+	"requireSpaceBeforeBinaryOperators": true,
+	"requireSpaceAfterBinaryOperators": true,
+	"requireCamelCaseOrUpperCaseIdentifiers": true,
+	"disallowKeywords": ["with"],
+	"validateLineBreaks": "LF",
+	"validateIndentation": 4,
+	"disallowMixedSpacesAndTabs": "smart",
+	"disallowTrailingWhitespace": true,
+	"disallowTrailingComma": true,
+	"disallowKeywordsOnNewLine": ["else"],
+	"maximumLineLength": 100,
+	"requireCapitalizedConstructors": true,
+	"safeContextKeyword": "self",
+	"disallowYodaConditions": true,
+	"requireSpaceAfterLineComment": true,
+	"disallowNewlineBeforeBlockStatements": true
+}

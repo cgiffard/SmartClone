@@ -1,0 +1,25 @@
+{
+  "expr": true,
+  "latedef": false,
+  "curly": false,
+  "eqeqeq": true,
+  "immed": true,
+  "newcap": false,
+  "noarg": true,
+  "sub": true,
+  "undef": true,
+  "boss": true,
+  "eqnull": true,
+  "node": true,
+  "predef": [
+    "sinon",
+    "expect",
+    "leche",
+    "before",
+    "beforeEach",
+    "afterEach",
+    "after",
+    "describe",
+    "it"
+  ]
+}
